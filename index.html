@@ -7,6 +7,12 @@
 
     <link rel="stylesheet" href="assets/css/main.css" />
     <link rel="stylesheet" href="assets/css/responsivo.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
 
     <script
       src="https://kit.fontawesome.com/287cea6207.js"
@@ -15,11 +21,23 @@
     ></script>
   </head>
   <body>
+    <nav class="main-nav">
+      <div class="logo">DOM CORTES</div>
+      <ul class="nav-links">
+        <li><a href="#hero">Início</a></li>
+        <li><a href="#juramento-ancora">O Juramento</a></li>
+        <li><a href="#ferramentas">Artefatos</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#localizacao">Localização</a></li>
+        <li><a href="#agendamento" class="nav-cta">Agendar</a></li>
+      </ul>
+    </nav>
+
     <header class="hero-section" id="hero">
       <div class="hero-content">
         <h1 class="hero-title">DOM CORTES</h1>
         <p class="hero-subtitle">Não é um corte. É um juramento.</p>
-        <a href="#servicos" class="btn-cta">AGENDE SEU LEGADO</a>
+        <a href="#servicos" class="btn-cta primary-cta">AGENDE SEU LEGADO</a>
       </div>
       <div class="hero-image-overlay"></div>
     </header>
@@ -28,10 +46,24 @@
       <div class="juramento-grid">
         <div class="juramento-text-container">
           <p class="juramento-text">
-            Eu, Pedro, encontrei neste ofício mais que um trabalho: Encontrei minha honra e meu propósito. A precisão no corte é a nossa linguagem, e a excelência, o juramento que renovamos a cada navalha.
+            Eu, Pedro, encontrei neste ofício mais que um trabalho: Encontrei
+            minha honra e meu propósito. A precisão no corte é a nossa
+            linguagem, e a excelência, o juramento que renovamos a cada navalha.
           </p>
         </div>
         <div class="juramento-image"></div>
+      </div>
+    </section>
+
+    <section class="galeria-section" id="galeria">
+      <h2 class="section-title">O Santuário</h2>
+      <p class="section-intro">
+        Um espaço onde a tradição e o conforto se encontram.
+      </p>
+      <div class="galeria-grid">
+        <div class="galeria-item img-ambiente-1"></div>
+        <div class="galeria-item img-ambiente-2"></div>
+        <div class="galeria-item img-ambiente-3"></div>
       </div>
     </section>
 
@@ -70,15 +102,59 @@
           href="https://wa.me/5511915478247"
           target="_blank"
           class="btn-cta large-cta"
+          id="agendamento"
         >
           MARQUE SEU CORTE
         </a>
 
         <ul class="servicos-list">
-          <li>Corte Clássico e Barba à Navalha</li>
-          <li>Aparagem e Desenho da Barba</li>
-          <li>Tratamento Premium de Cabelo</li>
+          <li>
+            <i class="fa-solid fa-razor"></i> Corte Clássico e Barba à Navalha
+          </li>
+          <li>
+            <i class="fa-solid fa-wand-magic-sparkles"></i> Aparagem e Desenho
+            da Barba
+          </li>
+          <li><i class="fa-solid fa-jar"></i> Tratamento Premium de Cabelo</li>
         </ul>
+      </div>
+    </section>
+
+    <section class="localizacao-section" id="localizacao">
+      <h2 class="section-title">Localização & Horários</h2>
+      <div class="localizacao-grid">
+        <div class="contato-info">
+          <h3>Onde a Honra Reside</h3>
+          <p>
+            <i class="fa-solid fa-location-dot"></i> Rua Fictícia da Barbearia,
+            456 - Bairro da Navalha - Cidade/UF
+          </p>
+
+          <h3>Nosso Ritual</h3>
+          <ul class="horarios-list">
+            <li>
+              <i class="fa-solid fa-calendar-days"></i> **Segunda a Sexta:**
+              09:00h às 19:00h
+            </li>
+            <li>
+              <i class="fa-solid fa-calendar-days"></i> **Sábados:** 09:00h às
+              15:00h
+            </li>
+            <li><i class="fa-solid fa-mug-hot"></i> **Domingos:** Fechado</li>
+          </ul>
+        </div>
+        <div class="mapa-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15330.158774786638!2d-48.27138768822393!3d-16.19532585097473!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9359c1c4639e4a8f%3A0x6a0a09e072f05a92!2sBras%C3%ADlia!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr"
+            width="100%"
+            height="450"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Localização da Dom Cortes no Mapa"
+          ></iframe>
+        </div>
       </div>
     </section>
 
@@ -87,11 +163,15 @@
         "Onde o tempo para. Dom Cortes. Legado de Honra."
       </p>
       <div class="social-links">
-        <a href="#" target="_blank">
+        <a href="#" target="_blank" title="Instagram da Dom Cortes">
           <i class="fab fa-instagram"></i>
         </a>
 
-        <a href="https://wa.me/5511915478247" target="_blank">
+        <a
+          href="https://wa.me/5511915478247"
+          target="_blank"
+          title="WhatsApp para Agendamentos"
+        >
           <i class="fab fa-whatsapp"></i>
         </a>
       </div>
