@@ -12,6 +12,14 @@
   .juramento-text-container {
     padding: 1.5rem;
   }
+
+  .depoimentos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .localizacao-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 800px) {
@@ -45,5 +53,9 @@
 
   .social-links {
     justify-content: center;
+  }
+
+  .galeria-grid {
+    grid-template-columns: 1fr;
   }
 }

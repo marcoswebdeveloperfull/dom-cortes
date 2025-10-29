@@ -22,14 +22,22 @@
   </head>
   <body>
     <nav class="main-nav">
-      <div class="logo">DOM CORTES</div>
+      <a href="#hero" class="logo-link">
+        <img
+          src="./assets/img/dom-cortes-logo-2.png"
+          alt="Dom Cortes Logo"
+          class="logo-img"
+        />
+      </a>
       <ul class="nav-links">
         <li><a href="#hero">Início</a></li>
         <li><a href="#juramento-ancora">O Juramento</a></li>
+        <li><a href="#galeria">O Santuário</a></li>
+        <li><a href="#depoimentos">Depoimentos</a></li>
         <li><a href="#ferramentas">Artefatos</a></li>
         <li><a href="#servicos">Serviços</a></li>
         <li><a href="#localizacao">Localização</a></li>
-        <li><a href="#agendamento" class="nav-cta">Agendar</a></li>
+        <li><a href="#servicos" class="nav-cta">Agendar</a></li>
       </ul>
     </nav>
 
@@ -64,29 +72,224 @@
         <div class="galeria-item img-ambiente-1"></div>
         <div class="galeria-item img-ambiente-2"></div>
         <div class="galeria-item img-ambiente-3"></div>
+        <div class="galeria-item img-ambiente-4"></div>
+        <div class="galeria-item img-ambiente-5"></div>
+        <div class="galeria-item img-ambiente-6"></div>
+      </div>
+    </section>
+
+    <section class="depoimentos-section" id="depoimentos">
+      <h2 class="section-title">O Que Dizem Nossos Clientes</h2>
+      <div class="depoimentos-grid">
+        <div class="depoimento-card">
+          <p class="depoimento-texto">
+            "Não é só um corte de cabelo, é uma experiência de honra. O Pedro é
+            um mestre, a precisão da navalha é impecável. Saí renovado e com o
+            visual afiado. Altamente recomendado!"
+          </p>
+          <p class="depoimento-autor">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+            ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+            ><i class="fa-solid fa-star"></i><br />
+            — Lucas M., **Investidor**
+          </p>
+        </div>
+
+        <div class="depoimento-card">
+          <p class="depoimento-texto">
+            "Ambiente de primeira, serviço impecável. O tratamento premium de
+            barba me deixou com uma aparência de respeito. A Dom Cortes elevou o
+            padrão de barbearia na cidade. Voltarei sempre."
+          </p>
+          <p class="depoimento-autor">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+            ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+            ><i class="fa-solid fa-star"></i><br />
+            — Rafael S., **Gestor de Projetos**
+          </p>
+        </div>
+
+        <div class="depoimento-card">
+          <p class="depoimento-texto">
+            "Pontualidade e qualidade raras. O corte clássico é feito com uma
+            atenção aos detalhes que impressiona. O nome Dom Cortes realmente
+            faz jus ao legado que eles estão construindo. Cinco estrelas!"
+          </p>
+          <p class="depoimento-autor">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+            ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+            ><i class="fa-solid fa-star"></i><br />
+            — Gabriel A., **Empreendedor**
+          </p>
+        </div>
+
+        <div class="depoimento-card">
+          <p class="depoimento-texto">
+            "Desde a primeira visita, senti que estava em um lugar onde a arte
+            da barbearia é levada a sério. A atenção do barbeiro aos mínimos
+            detalhes transforma o simples ato de cortar o cabelo em um ritual de
+            tradição."
+          </p>
+          <p class="depoimento-autor">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+            ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+            ><i class="fa-solid fa-star"></i><br />
+            — Fernando D., **Designer Sênior**
+          </p>
+        </div>
+
+        <div class="depoimento-card">
+          <p class="depoimento-texto">
+            "O Santuário Dom Cortes é o lugar perfeito para desconectar. A
+            atmosfera e a trilha sonora são impecáveis, proporcionando um
+            momento de paz e cuidado pessoal. O melhor refúgio para o homem
+            moderno."
+          </p>
+          <p class="depoimento-autor">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+            ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+            ><i class="fa-solid fa-star"></i><br />
+            — Ricardo P., **Corretor Imobiliário**
+          </p>
+        </div>
+
+        <div class="depoimento-card">
+          <p class="depoimento-texto">
+            "A barba à navalha é lendária! É o serviço mais preciso e
+            confortável que já experimentei. É nítida a paixão e o juramento de
+            excelência em cada movimento. Se busca um barbear perfeito, é aqui."
+          </p>
+          <p class="depoimento-autor">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+            ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+            ><i class="fa-solid fa-star"></i><br />
+            — Thiago B., **Consultor Financeiro**
+          </p>
+        </div>
       </div>
     </section>
 
     <section class="ferramentas-section" id="ferramentas">
       <h2 class="section-title">Os Artefatos</h2>
+      <div class="ferramentas-intro">
+        <p>
+          A história de um mestre é contada pelas suas ferramentas. Clique em
+          cada artefato para desvendar sua função no ritual de excelência.
+        </p>
+      </div>
       <div class="ferramentas-grid">
-        <div class="ferramenta item-1">
-          <span class="item-text">Navalha</span>
+        <div
+          class="ferramenta item-1"
+          onclick="this.classList.toggle('flipped')"
+        >
+          <div class="ferramenta-inner">
+            <div class="ferramenta-front">
+              <span class="item-text">Navalha</span>
+            </div>
+            <div class="ferramenta-back">
+              <h3 class="artefato-title">O Juramento Afiado</h3>
+              <p class="artefato-desc">
+                Símbolo máximo de precisão e confiança. Usada para o contorno
+                final e o barbear à moda antiga, garante um acabamento limpo e
+                lendário.
+              </p>
+            </div>
+          </div>
         </div>
-        <div class="ferramenta item-2">
-          <span class="item-text">Tesoura</span>
+
+        <div
+          class="ferramenta item-2"
+          onclick="this.classList.toggle('flipped')"
+        >
+          <div class="ferramenta-inner">
+            <div class="ferramenta-front">
+              <span class="item-text">Tesoura</span>
+            </div>
+            <div class="ferramenta-back">
+              <h3 class="artefato-title">A Linguagem do Detalhe</h3>
+              <p class="artefato-desc">
+                O instrumento de precisão para cortes que exigem técnica manual
+                e textura. Essencial para criar blends e caimentos naturais e
+                exclusivos.
+              </p>
+            </div>
+          </div>
         </div>
-        <div class="ferramenta item-3">
-          <span class="item-text">Pente</span>
+
+        <div
+          class="ferramenta item-3"
+          onclick="this.classList.toggle('flipped')"
+        >
+          <div class="ferramenta-inner">
+            <div class="ferramenta-front">
+              <span class="item-text">Pente</span>
+            </div>
+            <div class="ferramenta-back">
+              <h3 class="artefato-title">A Régua do Mestre</h3>
+              <p class="artefato-desc">
+                Não é apenas um guia, mas uma extensão da mão do barbeiro.
+                Define a linha, separa o volume e assegura a simetria perfeita
+                do seu corte.
+              </p>
+            </div>
+          </div>
         </div>
-        <div class="ferramenta item-4">
-          <span class="item-text">Máquina</span>
+
+        <div
+          class="ferramenta item-4"
+          onclick="this.classList.toggle('flipped')"
+        >
+          <div class="ferramenta-inner">
+            <div class="ferramenta-front">
+              <span class="item-text">Máquina</span>
+            </div>
+            <div class="ferramenta-back">
+              <h3 class="artefato-title">A Fundição do Degrade</h3>
+              <p class="artefato-desc">
+                Potência e controle em suas mãos. Usada para fades e texturas
+                modernas, é a base para a criação de um visual contemporâneo com
+                transições suaves.
+              </p>
+            </div>
+          </div>
         </div>
-        <div class="ferramenta item-5">
-          <span class="item-text">Escova</span>
+
+        <div
+          class="ferramenta item-5"
+          onclick="this.classList.toggle('flipped')"
+        >
+          <div class="ferramenta-inner">
+            <div class="ferramenta-front">
+              <span class="item-text">Escova</span>
+            </div>
+            <div class="ferramenta-back">
+              <h3 class="artefato-title">O Polimento Final</h3>
+              <p class="artefato-desc">
+                Utilizada para limpeza e para aplicação de produtos, prepara a
+                pele e os fios para receber o tratamento final ou a navalha,
+                garantindo o máximo conforto.
+              </p>
+            </div>
+          </div>
         </div>
-        <div class="ferramenta item-6">
-          <span class="item-text">Borrifador</span>
+
+        <div
+          class="ferramenta item-6"
+          onclick="this.classList.toggle('flipped')"
+        >
+          <div class="ferramenta-inner">
+            <div class="ferramenta-front">
+              <span class="item-text">Borrifador</span>
+            </div>
+            <div class="ferramenta-back">
+              <h3 class="artefato-title">O Toque de Umidade</h3>
+              <p class="artefato-desc">
+                Essencial para preparar o cabelo. Controla a umidade dos fios,
+                facilitando o corte e permitindo que o barbeiro alcance a
+                precisão necessária para a técnica desejada.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -126,26 +329,29 @@
         <div class="contato-info">
           <h3>Onde a Honra Reside</h3>
           <p>
-            <i class="fa-solid fa-location-dot"></i> Rua Fictícia da Barbearia,
-            456 - Bairro da Navalha - Cidade/UF
+            <i class="fa-solid fa-location-dot"></i> Avenida Guarulhos, 3927 -
+            Ponte Grande - Guarulhos/SP
           </p>
 
           <h3>Nosso Ritual</h3>
           <ul class="horarios-list">
             <li>
-              <i class="fa-solid fa-calendar-days"></i> **Segunda a Sexta:**
-              09:00h às 19:00h
+              <i class="fa-solid fa-calendar-days"></i>
+              <strong>Segunda a Sexta:</strong> 09:00h às 22:00h
             </li>
             <li>
-              <i class="fa-solid fa-calendar-days"></i> **Sábados:** 09:00h às
-              15:00h
+              <i class="fa-solid fa-calendar-days"></i>
+              <strong>Sábados:</strong> 09:00h às 22:00h
             </li>
-            <li><i class="fa-solid fa-mug-hot"></i> **Domingos:** Fechado</li>
+            <li>
+              <i class="fa-solid fa-mug-hot"></i>
+              <strong>Domingo:</strong> Fechado
+            </li>
           </ul>
         </div>
         <div class="mapa-container">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15330.158774786638!2d-48.27138768822393!3d-16.19532585097473!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9359c1c4639e4a8f%3A0x6a0a09e072f05a92!2sBras%C3%ADlia!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr"
+            src="https://maps.google.com/maps?q=Av. Guarulhos, 3927 - Pte. Grande, Guarulhos - SP, 07031-001&output=embed"
             width="100%"
             height="450"
             style="border: 0"
