@@ -1,0 +1,49 @@
+@media (max-width: 900px) {
+  .juramento-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .juramento-text-container,
+  .juramento-image {
+    grid-column: 1 / -1;
+  }
+
+  .juramento-text-container {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .ferramentas-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ferramenta {
+    grid-column: span 1;
+    grid-row: auto;
+  }
+
+  .item-1 {
+    grid-column: 1 / span 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .main-footer {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .footer-quote,
+  .social-links {
+    grid-column: 1 / -1;
+    justify-content: center;
+    margin: 0.5rem auto;
+  }
+
+  .social-links {
+    justify-content: center;
+  }
+}
