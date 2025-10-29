@@ -7,18 +7,14 @@ function generateRandomChar() {
 }
 
 function glitchText(element, originalText) {
-
   const textLength = originalText.length;
   let glitchCount = 0;
 
   const glitchInterval = setInterval(() => {
-
     let newText = "";
-
     const glitchDuration = 4;
 
     if (glitchCount < glitchDuration) {
-
       for (let i = 0; i < textLength; i++) {
         if (Math.random() < 0.3) {
           newText += generateRandomChar();
@@ -28,7 +24,6 @@ function glitchText(element, originalText) {
       }
 
       glitchCount++;
-
     } else {
       newText = originalText;
       clearInterval(glitchInterval);
@@ -46,4 +41,14 @@ function startGlitchLoop() {
   }, 7000);
 }
 
+function handleScroll() {
+  const nav = document.querySelector(".main-nav");
+  if (window.scrollY > 100) {
+    nav.classList.add("scrolled");
+  } else {
+    nav.classList.remove("scrolled");
+  }
+}
+
 window.addEventListener("load", startGlitchLoop);
+window.addEventListener("scroll", handleScroll);
