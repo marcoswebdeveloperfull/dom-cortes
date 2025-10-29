@@ -94,24 +94,21 @@ body {
   border-bottom: none !important;
 }
 
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+  font-size: 2rem;
+  color: var(--color-white);
+  z-index: 1001;
+}
+
 .hero-section {
   display: grid;
-  height: 100vh;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(10, 1fr);
   position: relative;
   overflow: hidden;
   scroll-snap-align: start;
-}
-
-.hero-image-overlay {
-  grid-column: 1 / -1;
-  grid-row: 1 / -1;
-  background-image: url("../img/hero.jpg");
-  background-size: cover;
-  background-position: center;
-  filter: grayscale(100%) brightness(0.7);
-  transition: filter 0.5s ease;
 }
 
 .hero-content {
