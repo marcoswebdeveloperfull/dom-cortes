@@ -405,6 +405,67 @@ document.addEventListener("DOMContentLoaded", function () {
     item.addEventListener("click", handleItemClick);
     item.addEventListener("dblclick", handleFerramentaDblClick);
   });
+
+  // =====================================
+  // 4. FUNCIONALIDADES DO CARROSSEL DE DEPOIMENTOS
+  // =====================================
+
+  const depoimentoCards = document.querySelectorAll(".depoimento-card");
+  const prevButtonDepo = document.querySelector(".prev-button");
+  const nextButtonDepo = document.querySelector(".next-button");
+  const dotsContainer = document.querySelector(".dots-container");
+  let currentIndexDepoimento = 0;
+
+  if (depoimentoCards.length > 0) {
+    function createDots() {
+      dotsContainer.innerHTML = "";
+      depoimentoCards.forEach((_, index) => {
+        const dot = document.createElement("div");
+        dot.classList.add("dot");
+        if (index === 0) {
+          dot.classList.add("active");
+        }
+        dot.addEventListener("click", () => showDepoimento(index));
+        dotsContainer.appendChild(dot);
+      });
+    }
+
+    function showDepoimento(index) {
+      if (index >= depoimentoCards.length) {
+        currentIndexDepoimento = 0;
+      } else if (index < 0) {
+        currentIndexDepoimento = depoimentoCards.length - 1;
+      } else {
+        currentIndexDepoimento = index;
+      }
+
+      depoimentoCards.forEach((card) => card.classList.remove("active"));
+      document
+        .querySelectorAll(".dot")
+        .forEach((dot) => dot.classList.remove("active"));
+
+      depoimentoCards[currentIndexDepoimento].classList.add("active");
+      document
+        .querySelectorAll(".dot")
+        [currentIndexDepoimento].classList.add("active");
+    }
+
+    if (prevButtonDepo && nextButtonDepo) {
+      prevButtonDepo.addEventListener("click", () =>
+        showDepoimento(currentIndexDepoimento - 1)
+      );
+      nextButtonDepo.addEventListener("click", () =>
+        showDepoimento(currentIndexDepoimento + 1)
+      );
+    }
+
+    createDots();
+    showDepoimento(currentIndexDepoimento);
+
+    setInterval(() => {
+      showDepoimento(currentIndexDepoimento + 1);
+    }, 7000);
+  }
 });
 
 // =====================================
