@@ -1,11 +1,13 @@
 // =====================================
-// 1. CONTEÚDO SCRIPTS.JS
+// 1. FUNCIONALIDADES DO SCRIPTS.JS
+// (MENU TOGGLE, SCROLL NAVBAR, EFEITO GLITCH)
 // =====================================
 
 document.addEventListener("DOMContentLoaded", function () {
   const toggleButton = document.querySelector(".menu-toggle");
   const navLinks = document.querySelector(".nav-links");
   const mainNav = document.querySelector(".main-nav");
+  const titleElement = document.querySelector(".hero-title");
 
   if (toggleButton && navLinks && mainNav) {
     toggleButton.addEventListener("click", () => {
@@ -31,8 +33,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   }
-
-  const titleElement = document.querySelector(".hero-title");
 
   if (titleElement) {
     const originalText = titleElement.textContent;
@@ -80,34 +80,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     startGlitchLoop();
   }
-});
 
-function handleScroll() {
-  const nav = document.querySelector(".main-nav");
-  if (nav) {
-    if (window.scrollY > 100) {
-      nav.classList.add("scrolled");
-    } else {
-      nav.classList.remove("scrolled");
-    }
-  }
-}
+  // =====================================
+  // 2. FUNCIONALIDADES DO CHATBOT.JS
+  // =====================================
 
-window.addEventListener("scroll", handleScroll);
-
-// =====================================
-// 2. CONTEÚDO ORIGINAL DE CHATBOT.JS
-// =====================================
-
-document.addEventListener("DOMContentLoaded", () => {
-  const toggleButton = document.getElementById("chatbot-toggle");
-  const closeButton = document.getElementById("chatbot-close");
+  const chatToggle = document.getElementById("chatbot-toggle");
+  const chatCloseButton = document.getElementById("chatbot-close");
   const chatWindow = document.getElementById("chatbot-window");
   const chatBody = document.getElementById("chatbot-body");
   const chatOptions = document.getElementById("chat-options");
   const chatInput = document.getElementById("chatbot-input");
   const sendButton = document.getElementById("chatbot-send");
-
 
   const faq = {
     horário: {
@@ -133,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   /**
-   *
+   * ADICIONA UMA MENSAGEM AO CORPO DO CHAT E ROLA PARA O FINAL.
    * @param {string} text
    * @param {string} type
    */
@@ -146,10 +130,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /**
-   * 
+   * RESPONDE À CONSULTA DO USUÁRIO COM BASE NA CHAVE (query).
    * @param {string} key
    */
-
   function respondToQuery(key) {
     chatOptions.style.display = "none";
 
@@ -163,27 +146,31 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 1500);
   }
 
-  toggleButton.addEventListener("click", () => {
-    chatWindow.classList.toggle("hidden");
-    if (!chatWindow.classList.contains("hidden")) {
-      chatBody.scrollTop = chatBody.scrollHeight;
-    }
-  });
+  if (chatToggle && chatWindow && chatCloseButton) {
+    chatToggle.addEventListener("click", () => {
+      chatWindow.classList.toggle("hidden");
+      if (!chatWindow.classList.contains("hidden")) {
+        chatBody.scrollTop = chatBody.scrollHeight;
+      }
+    });
 
-  closeButton.addEventListener("click", () => {
-    chatWindow.classList.add("hidden");
-  });
+    chatCloseButton.addEventListener("click", () => {
+      chatWindow.classList.add("hidden");
+    });
+  }
 
-  chatOptions.addEventListener("click", (event) => {
-    if (event.target.classList.contains("option-btn")) {
-      const query = event.target.dataset.query;
-      const text = event.target.textContent;
+  if (chatOptions) {
+    chatOptions.addEventListener("click", (event) => {
+      if (event.target.classList.contains("option-btn")) {
+        const query = event.target.dataset.query;
+        const text = event.target.textContent;
 
-      addMessage(text, "user-message");
+        addMessage(text, "user-message");
 
-      respondToQuery(query);
-    }
-  });
+        respondToQuery(query);
+      }
+    });
+  }
 
   function handleSend() {
     const text = chatInput.value.trim();
@@ -213,19 +200,19 @@ document.addEventListener("DOMContentLoaded", () => {
     respondToQuery(foundKey);
   }
 
-  sendButton.addEventListener("click", handleSend);
-  chatInput.addEventListener("keypress", (e) => {
-    if (e.key === "Enter") {
-      handleSend();
-    }
-  });
-});
+  if (sendButton && chatInput) {
+    sendButton.addEventListener("click", handleSend);
+    chatInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        handleSend();
+      }
+    });
+  }
 
-// =====================================
-// 3. CONTEÚDO ORIGINAL DE LIGHTBOX.JS
-// =====================================
+  // =====================================
+  // 3. FUNCIONALIDADES DO LIGHTBOX.JS
+  // =====================================
 
-document.addEventListener("DOMContentLoaded", function () {
   const lightboxModal = document.getElementById("lightbox-modal");
   const lightboxImage = document.getElementById("lightbox-image");
   const lightboxDescription = document.getElementById("lightbox-description");
@@ -293,21 +280,26 @@ document.addEventListener("DOMContentLoaded", function () {
     openLightbox(item);
   }
 
-  closeButton.addEventListener("click", closeLightbox);
-  prevButton.addEventListener("click", () => navigate(-1));
-  nextButton.addEventListener("click", () => navigate(1));
+  if (closeButton && prevButton && nextButton && lightboxModal) {
+    closeButton.addEventListener("click", closeLightbox);
+    prevButton.addEventListener("click", () => navigate(-1));
+    nextButton.addEventListener("click", () => navigate(1));
 
-  document.addEventListener("keydown", function (event) {
-    if (event.key === "Escape" && !lightboxModal.classList.contains("hidden")) {
-      closeLightbox();
-    }
-  });
+    document.addEventListener("keydown", function (event) {
+      if (
+        event.key === "Escape" &&
+        !lightboxModal.classList.contains("hidden")
+      ) {
+        closeLightbox();
+      }
+    });
 
-  lightboxModal.addEventListener("click", (event) => {
-    if (event.target === lightboxModal) {
-      closeLightbox();
-    }
-  });
+    lightboxModal.addEventListener("click", (event) => {
+      if (event.target === lightboxModal) {
+        closeLightbox();
+      }
+    });
+  }
 
   const galeriaItems = document.querySelectorAll(".galeria-item");
   galeriaItems.forEach((item) => {
@@ -320,3 +312,20 @@ document.addEventListener("DOMContentLoaded", function () {
     item.addEventListener("dblclick", handleFerramentaDblClick);
   });
 });
+
+// =====================================
+// FUNCIONALIDADES GLOBAIS FORA DO DOMContentLoaded
+// =====================================
+
+function handleScroll() {
+  const nav = document.querySelector(".main-nav");
+  if (nav) {
+    if (window.scrollY > 100) {
+      nav.classList.add("scrolled");
+    } else {
+      nav.classList.remove("scrolled");
+    }
+  }
+}
+
+window.addEventListener("scroll", handleScroll);
