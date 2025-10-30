@@ -188,10 +188,11 @@ body {
   grid-column: 3 / 4;
   max-height: 450px;
   min-height: 350px;
-  background-image: url("../img/cadeira.jpg");
+  background-image: url("../img/cadeira.webp");
   background-size: cover;
   background-position: center;
   filter: sepia(0.8) grayscale(0.5);
+  border-radius: 9px;
 }
 
 .section-title {
@@ -241,27 +242,33 @@ body {
 }
 
 .img-ambiente-1 {
-  background-image: url("../img/ambiente-1.jpg");
+  background-image: url("../img/ambiente-1.webp");
+  border-radius: 9px;
 }
 
 .img-ambiente-2 {
-  background-image: url("../img/ambiente-2.jpg");
+  background-image: url("../img/ambiente-2.webp");
+  border-radius: 9px;
 }
 
 .img-ambiente-3 {
-  background-image: url("../img/ambiente-3.jpg");
+  background-image: url("../img/ambiente-3.webp");
+  border-radius: 9px;
 }
 
 .img-ambiente-4 {
-  background-image: url("../img/ambiente-4.jpg");
+  background-image: url("../img/ambiente-4.webp");
+  border-radius: 9px;
 }
 
 .img-ambiente-5 {
-  background-image: url("../img/ambiente-5.jpg");
+  background-image: url("../img/ambiente-5.webp");
+  border-radius: 9px;
 }
 
 .img-ambiente-6 {
-  background-image: url("../img/ambiente-6.jpg");
+  background-image: url("../img/ambiente-6.webp");
+  border-radius: 9px;
 }
 
 .ferramentas-section {
@@ -385,37 +392,37 @@ body {
 .item-1 .ferramenta-front {
   grid-column: span 1;
   grid-row: 1;
-  background-image: url("../img/navalha.jpg");
+  background-image: url("../img/navalha.webp");
 }
 
 .item-2 .ferramenta-front {
   grid-column: span 1;
   grid-row: 1;
-  background-image: url("../img/tesoura.jpg");
+  background-image: url("../img/tesoura.webp");
 }
 
 .item-3 .ferramenta-front {
   grid-column: span 1;
   grid-row: 1;
-  background-image: url("../img/pente.jpg");
+  background-image: url("../img/pente.webp");
 }
 
 .item-4 .ferramenta-front {
   grid-column: span 1;
   grid-row: 2;
-  background-image: url("../img/maquininha.jpg");
+  background-image: url("../img/maquininha.webp");
 }
 
 .item-5 .ferramenta-front {
   grid-column: span 1;
   grid-row: 2;
-  background-image: url("../img/escova.jpg");
+  background-image: url("../img/escova.webp");
 }
 
 .item-6 .ferramenta-front {
   grid-column: span 1;
   grid-row: 2;
-  background-image: url("../img/borrifador.jpg");
+  background-image: url("../img/borrifador.webp");
 }
 
 .servicos-section {

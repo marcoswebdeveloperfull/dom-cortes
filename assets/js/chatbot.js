@@ -84,7 +84,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // 6. Lógica de Interação (Envio de Texto)
   function handleSend() {
     const text = chatInput.value.trim();
     if (text === "") return;
