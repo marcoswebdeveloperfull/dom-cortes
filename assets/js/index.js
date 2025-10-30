@@ -21,7 +21,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
-    // Fecha o menu ao clicar em um link
     navLinks.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => {
         navLinks.classList.remove("active");
