@@ -82,6 +82,31 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // =====================================
+  // 1.5 FUNCIONALIDADES DE ABAS (TABS)
+  // =====================================
+
+  const tabButtons = document.querySelectorAll(".tab-button");
+  const tabContents = document.querySelectorAll(".tab-content");
+
+  if (tabButtons.length > 0 && tabContents.length > 0) {
+    tabButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const targetTabId = button.dataset.tab;
+
+        tabButtons.forEach((btn) => btn.classList.remove("active"));
+        tabContents.forEach((content) => content.classList.remove("active"));
+
+        button.classList.add("active");
+
+        const targetContent = document.getElementById(targetTabId);
+        if (targetContent) {
+          targetContent.classList.add("active");
+        }
+      });
+    });
+  }
+
+  // =====================================
   // 2. FUNCIONALIDADES DO CHATBOT.JS
   // =====================================
 
@@ -252,7 +277,6 @@ document.addEventListener("DOMContentLoaded", function () {
     )
       scores.agendar += 1;
 
-
     let foundKey = "default";
     let maxScore = 0;
 
@@ -338,7 +362,6 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    // Ação para itens da galeria
     currentGallery = Array.from(document.querySelectorAll(".galeria-item"));
     currentIndex = currentGallery.indexOf(item);
     openLightbox(item);
