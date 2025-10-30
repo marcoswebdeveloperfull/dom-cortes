@@ -1,5 +1,5 @@
 /* ===================================== */
-/* 1. CONTEÚDO ORIGINAL DE MAIN.CSS
+/* VARS E RESET
 /* ===================================== */
 
 :root {
@@ -18,34 +18,14 @@
   box-sizing: border-box;
 }
 
+/* ===================================== */
+/* CLASSES DE TRANSIÇÃO E INTERAÇÃO
+/* ===================================== */
+
 body {
-  font-family: var(--font-mono);
-  color: var(--color-cinza-vintage);
-  background: linear-gradient(
-    180deg,
-    rgba(17, 17, 17, 1) 0%,
-    rgba(30, 0, 0, 1) 100%
-  );
-  line-height: 1.6;
-  overflow-x: hidden;
   opacity: 1;
   transition: opacity 2s ease-in-out;
   scroll-behavior: smooth;
-}
-
-.main-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.8rem 3vw;
-  background-color: transparent;
-  backdrop-filter: blur(0px);
-  transition: background-color 0.4s ease, backdrop-filter 0.4s ease;
 }
 
 .main-nav.scrolled {
@@ -54,41 +34,12 @@ body {
   border-bottom: 1px solid var(--color-acento-bordo);
 }
 
-.logo-img {
-  height: 90px;
-  width: auto;
-  display: block;
-}
-
-.logo-link {
-  display: inline-block;
-  padding: 0;
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: var(--color-cinza-vintage);
-  font-size: 0.9rem;
-  letter-spacing: 0.1em;
-  padding: 0.5rem 0;
-  transition: color 0.3s, border-bottom 0.3s;
-}
-
 .nav-links a:hover {
   color: var(--color-white);
   border-bottom: 2px solid var(--color-acento-bordo);
 }
 
 .nav-cta {
-  color: var(--color-acento-bordo) !important;
-  border: 1px solid var(--color-acento-bordo);
-  padding: 0.5rem 1rem !important;
   transition: background-color 0.3s, color 0.3s;
 }
 
@@ -98,58 +49,7 @@ body {
   border-bottom: none !important;
 }
 
-.menu-toggle {
-  display: none;
-  cursor: pointer;
-  font-size: 2rem;
-  color: var(--color-white);
-  z-index: 1001;
-}
-
-.hero-section {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(10, 1fr);
-  position: relative;
-  overflow: hidden;
-  scroll-snap-align: start;
-}
-
-.hero-content {
-  grid-column: 2 / 8;
-  grid-row: 3 / 8;
-  z-index: 10;
-  color: var(--color-white);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  align-self: center;
-}
-
-.hero-title {
-  font-family: var(--font-serif);
-  font-size: 8vw;
-  line-height: 1;
-  margin-bottom: 0.2em;
-  color: var(--color-acento-bordo);
-  text-transform: uppercase;
-}
-
-.hero-subtitle {
-  font-family: var(--font-mono);
-  font-size: 1.5rem;
-  margin-bottom: 2rem;
-  letter-spacing: 0.2em;
-}
-
 .btn-cta {
-  display: inline-block;
-  padding: 1rem 2rem;
-  font-family: var(--font-mono);
-  text-decoration: none;
-  font-weight: bold;
-  letter-spacing: 0.1em;
-  color: var(--color-acento-bordo);
-  border: 2px solid var(--color-acento-bordo);
-  background-color: transparent;
   transition: background-color 0.3s, color 0.3s;
 }
 
@@ -157,6 +57,10 @@ body {
   background-color: var(--color-acento-bordo);
   color: var(--color-white);
 }
+
+/* ===================================== */
+/* O JURAMENTO SECTION
+/* ===================================== */
 
 .o-juramento-section {
   min-height: 80vh;
@@ -199,6 +103,10 @@ body {
   border-radius: 9px;
 }
 
+/* ===================================== */
+/* SECTIONS GERAIS
+/* ===================================== */
+
 .section-title {
   font-family: var(--font-serif);
   font-size: 4rem;
@@ -217,6 +125,10 @@ body {
   margin-bottom: 4rem;
   font-style: italic;
 }
+
+/* ===================================== */
+/* GALERIA SECTION
+/* ===================================== */
 
 .galeria-section {
   min-height: 70vh;
@@ -274,6 +186,10 @@ body {
   background-image: url("../img/ambiente-6.webp");
   border-radius: 9px;
 }
+
+/* ===================================== */
+/* FERRAMENTAS SECTION
+/* ===================================== */
 
 .ferramentas-section {
   min-height: 100vh;
@@ -429,6 +345,10 @@ body {
   background-image: url("../img/borrifador.webp");
 }
 
+/* ===================================== */
+/* SERVIÇOS SECTION
+/* ===================================== */
+
 .servicos-section {
   min-height: 80vh;
   padding: 8rem 5vw;
@@ -493,6 +413,10 @@ body {
   color: var(--color-acento-bordo);
   font-size: 1.2rem;
 }
+
+/* ===================================== */
+/* LOCALIZAÇÃO SECTION
+/* ===================================== */
 
 .localizacao-section {
   min-height: 80vh;
@@ -562,6 +486,10 @@ body {
   filter: grayscale(80%) invert(10%);
 }
 
+/* ===================================== */
+/* FOOTER
+/* ===================================== */
+
 .main-footer {
   padding: 3rem 3vw 1.5rem;
   border-top: 1px solid var(--color-acento-bordo);
@@ -597,6 +525,10 @@ body {
 .social-links a:hover {
   color: var(--color-white);
 }
+
+/* ===================================== */
+/* DEPOIMENTOS SECTION
+/* ===================================== */
 
 .depoimentos-section {
   padding: 8rem 5vw;
@@ -653,7 +585,7 @@ body {
 }
 
 /* ===================================== */
-/* 2. CONTEÚDO ORIGINAL DE CHATBOT.CSS
+/* CHATBOT.CSS
 /* ===================================== */
 
 #chatbot-container {
@@ -822,7 +754,7 @@ body {
 }
 
 /* ===================================== */
-/* 3. CONTEÚDO ORIGINAL DE LIGHTBOX.CSS
+/* LIGHTBOX.CSS
 /* ===================================== */
 
 .lightbox-modal {
@@ -979,23 +911,10 @@ body {
 }
 
 /* ===================================== */
-/* 4. CONTEÚDO ORIGINAL DE RESPONSIVO.CSS
+/* RESPONSIVO.CSS
 /* ===================================== */
 
 @media (max-width: 1024px) {
-  .menu-toggle {
-    display: block;
-    z-index: 1002;
-  }
-  .menu-toggle i {
-    color: var(--color-white);
-    font-size: 1rem;
-  }
-
-  .nav-links {
-    display: none;
-  }
-
   .nav-links.active {
     display: flex;
     flex-direction: column;
@@ -1092,35 +1011,6 @@ body {
   }
   .mapa-container {
     height: 300px;
-  }
-
-  .main-nav {
-    height: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem 5vw;
-    z-index: 1000;
-    position: fixed;
-    width: 100%;
-    background-color: var(--color-black);
-  }
-
-  .logo-img {
-    height: 50px;
-  }
-
-  .menu-toggle {
-    display: block;
-    z-index: 1002;
-  }
-  .menu-toggle i {
-    color: var(--color-white);
-    font-size: 2rem;
-  }
-
-  .nav-links {
-    display: none;
   }
 
   .nav-links.active {
