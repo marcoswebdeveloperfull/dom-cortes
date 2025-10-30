@@ -20,6 +20,7 @@
     <title>Dom Cortes: O Santuário</title>
 
     <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/chatbot.css">
     <link rel="stylesheet" href="assets/css/responsivo.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -404,6 +405,42 @@
       </div>
     </footer>
 
+    <div id="chatbot-container">
+      <button id="chatbot-toggle" class="chatbot-btn">💬</button>
+
+      <div id="chatbot-window" class="chatbot-window hidden">
+        <div class="chatbot-header">
+          Dom Cortes - Ajuda Rápida
+          <button id="chatbot-close" class="chatbot-close-btn">X</button>
+        </div>
+        <div id="chatbot-body" class="chatbot-body">
+          <div class="chat-message bot-message">
+            Olá! Sou o assistente Dom Cortes. Selecione ou digite sua dúvida:
+          </div>
+          <div class="chat-options" id="chat-options">
+            <button class="option-btn" data-query="horário">
+              Qual é o horário?
+            </button>
+            <button class="option-btn" data-query="endereço">
+              Onde fica a barbearia?
+            </button>
+            <button class="option-btn" data-query="serviços">
+              Quais serviços?
+            </button>
+          </div>
+        </div>
+        <div class="chatbot-footer">
+          <input
+            type="text"
+            id="chatbot-input"
+            placeholder="Digite sua dúvida..."
+          />
+          <button id="chatbot-send">Enviar</button>
+        </div>
+      </div>
+    </div>
+
     <script src="assets/js/scripts.js"></script>
+    <script src="assets/js/chatbot.js"></script>
   </body>
 </html>
