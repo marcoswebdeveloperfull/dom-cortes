@@ -1,9 +1,9 @@
-// =====================================
-// 1. FUNCIONALIDADES DO SCRIPTS.JS
-// (MENU TOGGLE, SCROLL NAVBAR, EFEITO GLITCH)
-// =====================================
-
 document.addEventListener("DOMContentLoaded", function () {
+  // =====================================
+  // 1. FUNCIONALIDADES DO SCRIPTS.JS
+  // (MENU TOGGLE, SCROLL NAVBAR, EFEITO GLITCH)
+  // =====================================
+
   const toggleButton = document.querySelector(".menu-toggle");
   const navLinks = document.querySelector(".nav-links");
   const mainNav = document.querySelector(".main-nav");
@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
+    // Fecha o menu ao clicar em um link
     navLinks.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => {
         navLinks.classList.remove("active");
@@ -181,20 +182,90 @@ document.addEventListener("DOMContentLoaded", function () {
     addMessage(text, "user-message");
 
     const lowerText = text.toLowerCase();
-    let foundKey = "default";
 
-    if (lowerText.includes("horario") || lowerText.includes("hora")) {
-      foundKey = "horário";
-    } else if (lowerText.includes("endereco") || lowerText.includes("onde")) {
-      foundKey = "endereço";
-    } else if (
-      lowerText.includes("servicos") ||
-      lowerText.includes("corte") ||
-      lowerText.includes("barba")
-    ) {
-      foundKey = "serviços";
-    } else if (lowerText.includes("agendar") || lowerText.includes("marcar")) {
-      foundKey = "agendar";
+    let scores = {
+      horário: 0,
+      endereço: 0,
+      serviços: 0,
+      agendar: 0,
+    };
+
+    const normalizedText = lowerText
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+
+    if (
+      normalizedText.includes("horario") ||
+      normalizedText.includes("funciona")
+    )
+      scores.horário += 3;
+    if (
+      normalizedText.includes("hora") ||
+      normalizedText.includes("abre") ||
+      normalizedText.includes("fecha")
+    )
+      scores.horário += 2;
+    if (normalizedText.includes("domingo") || normalizedText.includes("sabado"))
+      scores.horário += 1;
+
+    if (
+      normalizedText.includes("onde") ||
+      normalizedText.includes("endereco") ||
+      normalizedText.includes("local")
+    )
+      scores.endereço += 3;
+    if (
+      normalizedText.includes("chegar") ||
+      normalizedText.includes("mapa") ||
+      normalizedText.includes("rua")
+    )
+      scores.endereço += 2;
+
+    if (
+      normalizedText.includes("servicos") ||
+      normalizedText.includes("produtos") ||
+      normalizedText.includes("quanto custa")
+    )
+      scores.serviços += 3;
+    if (
+      normalizedText.includes("corte") ||
+      normalizedText.includes("barba") ||
+      normalizedText.includes("preco")
+    )
+      scores.serviços += 2;
+    if (
+      normalizedText.includes("tratamento") ||
+      normalizedText.includes("luzes") ||
+      normalizedText.includes("botox")
+    )
+      scores.serviços += 1;
+
+    if (
+      normalizedText.includes("agendar") ||
+      normalizedText.includes("marcar") ||
+      normalizedText.includes("reservar")
+    )
+      scores.agendar += 4;
+    if (
+      normalizedText.includes("link") ||
+      normalizedText.includes("site") ||
+      normalizedText.includes("quero")
+    )
+      scores.agendar += 1;
+
+
+    let foundKey = "default";
+    let maxScore = 0;
+
+    for (const key in scores) {
+      if (scores[key] > maxScore) {
+        maxScore = scores[key];
+        foundKey = key;
+      }
+    }
+
+    if (maxScore < 2) {
+      foundKey = "default";
     }
 
     respondToQuery(foundKey);
@@ -268,6 +339,7 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
+    // Ação para itens da galeria
     currentGallery = Array.from(document.querySelectorAll(".galeria-item"));
     currentIndex = currentGallery.indexOf(item);
     openLightbox(item);
