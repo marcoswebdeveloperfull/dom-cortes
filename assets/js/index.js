@@ -8,10 +8,10 @@ function initializeServicesCarousel(tabContent) {
       ".carousel-track .servico-card"
     );
     const prevButtonServicos = tabContent.querySelector(
-      ".prev-button-servicos"
+      ".prev-button"
     );
     const nextButtonServicos = tabContent.querySelector(
-      ".next-button-servicos"
+      ".next-button"
     );
     const dotsContainerServicos = tabContent.querySelector(
       ".dots-container-servicos"
