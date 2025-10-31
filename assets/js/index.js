@@ -1,10 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // =====================================
-  // 1. FUNCIONALIDADES DO SCRIPTS.JS
-  // (MENU TOGGLE, SCROLL NAVBAR, EFEITO GLITCH)
-  // =====================================
-
-  const toggleButton = document.querySelector(".menu-toggle");
+const toggleButton = document.querySelector(".menu-toggle");
   const navLinks = document.querySelector(".nav-links");
   const mainNav = document.querySelector(".main-nav");
   const titleElement = document.querySelector(".hero-title");
@@ -81,10 +76,6 @@ document.addEventListener("DOMContentLoaded", function () {
     startGlitchLoop();
   }
 
-  // =====================================
-  // 1.5 FUNCIONALIDADES DE ABAS (TABS)
-  // =====================================
-
   const tabButtons = document.querySelectorAll(".tab-button");
   const tabContents = document.querySelectorAll(".tab-content");
 
@@ -101,14 +92,166 @@ document.addEventListener("DOMContentLoaded", function () {
         const targetContent = document.getElementById(targetTabId);
         if (targetContent) {
           targetContent.classList.add("active");
+
+          initializeServicesCarousel(targetContent);
         }
       });
     });
+
+    const activeTab = document.querySelector(".tab-content.active");
+    if (activeTab) {
+      initializeServicesCarousel(activeTab);
+    }
   }
 
-  // =====================================
-  // 2. FUNCIONALIDADES DO CHATBOT.JS
-  // =====================================
+  /**
+   * 
+   * @param {HTMLElement} tabContent
+   */
+  function initializeServicesCarousel(tabContent) {
+
+    setTimeout(() => {
+      const trackElement = tabContent.querySelector(".carousel-track");
+      const serviceCards = tabContent.querySelectorAll(
+        ".carousel-track .servico-card"
+      );
+      const prevButtonServicos = tabContent.querySelector(
+        ".prev-button-servicos"
+      );
+      const nextButtonServicos = tabContent.querySelector(
+        ".next-button-servicos"
+      );
+      const dotsContainerServicos = tabContent.querySelector(
+        ".dots-container-servicos"
+      );
+
+      const CARDS_PER_VIEW = 2;
+
+      if (!trackElement || serviceCards.length === 0) return;
+
+      if (trackElement.onscroll) {
+        trackElement.onscroll = null;
+      }
+
+      function getScrollPageWidth() {
+        if (serviceCards.length === 0) return 0;
+
+        const firstCard = serviceCards[0];
+        const cardWidth = firstCard.offsetWidth;
+        const trackWidth = trackElement.offsetWidth;
+
+        const CARD_GAP = 20;
+
+        const advanceWidth =
+          cardWidth * CARDS_PER_VIEW + CARD_GAP * (CARDS_PER_VIEW - 1);
+
+        return advanceWidth > 0 ? advanceWidth : trackWidth;
+      }
+
+      function calculateTotalPages() {
+        const totalCards = serviceCards.length;
+        if (totalCards === 0) return 0;
+
+        return Math.ceil(totalCards / CARDS_PER_VIEW);
+      }
+
+      function getCurrentPageIndex() {
+        const trackScroll = trackElement.scrollLeft;
+        const scrollPageWidth = getScrollPageWidth();
+
+        if (scrollPageWidth === 0) return 0;
+        return Math.round(trackScroll / scrollPageWidth);
+      }
+
+      function updateDots() {
+        if (dotsContainerServicos) {
+          const currentIndex = getCurrentPageIndex();
+          const totalDots = dotsContainerServicos.querySelectorAll(".dot");
+
+          totalDots.forEach((dot, index) => {
+            dot.classList.remove("active");
+            if (index === currentIndex) {
+              dot.classList.add("active");
+            }
+          });
+        }
+      }
+
+      function createDots() {
+        if (dotsContainerServicos) {
+          dotsContainerServicos.innerHTML = "";
+          const totalPages = calculateTotalPages();
+
+          for (let i = 0; i < totalPages; i++) {
+            const dot = document.createElement("div");
+            dot.classList.add("dot");
+            if (i === 0) dot.classList.add("active");
+
+            dot.addEventListener("click", () => {
+              scrollToPage(i);
+            });
+            dotsContainerServicos.appendChild(dot);
+          }
+
+          const showControls = totalPages > 1;
+
+          dotsContainerServicos.style.display = showControls ? "flex" : "none";
+
+          if (prevButtonServicos && nextButtonServicos) {
+            prevButtonServicos.style.display = showControls ? "flex" : "none";
+            nextButtonServicos.style.display = showControls ? "flex" : "none";
+          }
+        }
+      }
+
+      function scrollToPage(index) {
+        const scrollPageWidth = getScrollPageWidth();
+        const totalPages = calculateTotalPages();
+
+        let targetIndex = index;
+        if (targetIndex < 0) targetIndex = 0;
+        if (targetIndex >= totalPages) targetIndex = totalPages - 1;
+
+        const scrollPosition = targetIndex * scrollPageWidth;
+
+        trackElement.scrollTo({
+          left: scrollPosition,
+          behavior: "smooth",
+        });
+      }
+
+      if (prevButtonServicos && nextButtonServicos) {
+
+        const oldPrev = prevButtonServicos.cloneNode(true);
+        prevButtonServicos.parentNode.replaceChild(oldPrev, prevButtonServicos);
+        const oldNext = nextButtonServicos.cloneNode(true);
+        nextButtonServicos.parentNode.replaceChild(oldNext, nextButtonServicos);
+
+        const newPrevButton = tabContent.querySelector(".prev-button-servicos");
+        const newNextButton = tabContent.querySelector(".next-button-servicos");
+
+        newPrevButton.addEventListener("click", () => {
+          const currentIndex = getCurrentPageIndex();
+          scrollToPage(currentIndex - 1);
+        });
+
+        newNextButton.addEventListener("click", () => {
+          const currentIndex = getCurrentPageIndex();
+          scrollToPage(currentIndex + 1);
+        });
+      }
+
+      trackElement.onscroll = () => {
+        clearTimeout(trackElement.scrollTimeout);
+        trackElement.scrollTimeout = setTimeout(updateDots, 150);
+      };
+
+      trackElement.scrollLeft = 0;
+
+      createDots();
+      updateDots();
+    }, 100);
+  }
 
   const chatToggle = document.getElementById("chatbot-toggle");
   const chatCloseButton = document.getElementById("chatbot-close");
@@ -303,10 +446,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // =====================================
-  // 3. FUNCIONALIDADES DO LIGHTBOX.JS
-  // =====================================
-
   const lightboxModal = document.getElementById("lightbox-modal");
   const lightboxImage = document.getElementById("lightbox-image");
   const lightboxDescription = document.getElementById("lightbox-description");
@@ -327,6 +466,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     lightboxModal.classList.remove("hidden");
     document.body.style.overflow = "hidden";
+
+    if (currentGallery.length > 1 && prevButton && nextButton) {
+      prevButton.style.display = "block";
+      nextButton.style.display = "block";
+    } else if (prevButton && nextButton) {
+      prevButton.style.display = "none";
+      nextButton.style.display = "none";
+    }
   }
 
   function closeLightbox() {
@@ -406,10 +553,6 @@ document.addEventListener("DOMContentLoaded", function () {
     item.addEventListener("dblclick", handleFerramentaDblClick);
   });
 
-  // =====================================
-  // 4. FUNCIONALIDADES DO CARROSSEL DE DEPOIMENTOS
-  // =====================================
-
   const depoimentoCards = document.querySelectorAll(".depoimento-card");
   const prevButtonDepo = document.querySelector(".prev-button");
   const nextButtonDepo = document.querySelector(".next-button");
@@ -466,11 +609,19 @@ document.addEventListener("DOMContentLoaded", function () {
       showDepoimento(currentIndexDepoimento + 1);
     }, 7000);
   }
-});
 
-// =====================================
-// FUNCIONALIDADES GLOBAIS FORA DO DOMContentLoaded
-// =====================================
+  let resizeTimeout;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      const activeTab = document.querySelector(".tab-content.active");
+      if (activeTab) {
+
+        initializeServicesCarousel(activeTab);
+      }
+    }, 300);
+  });
+});
 
 function handleScroll() {
   const nav = document.querySelector(".main-nav");
