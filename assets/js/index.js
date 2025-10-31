@@ -7,12 +7,9 @@ function initializeServicesCarousel(tabContent) {
     const serviceCards = tabContent.querySelectorAll(
       ".carousel-track .servico-card"
     );
-    const prevButtonServicos = tabContent.querySelector(
-      ".prev-button"
-    );
-    const nextButtonServicos = tabContent.querySelector(
-      ".next-button"
-    );
+
+    const prevButtonServicos = tabContent.querySelector(".prev-button");
+    const nextButtonServicos = tabContent.querySelector(".next-button");
     const dotsContainerServicos = tabContent.querySelector(
       ".dots-container-servicos"
     );
@@ -92,6 +89,7 @@ function initializeServicesCarousel(tabContent) {
       const totalPages = calculateTotalPages();
 
       let targetIndex = index;
+
       if (targetIndex < 0) targetIndex = 0;
       if (targetIndex >= totalPages) targetIndex = totalPages - 1;
 
@@ -104,25 +102,43 @@ function initializeServicesCarousel(tabContent) {
     }
 
     if (trackElement.__prevListener) {
-      prevButtonServicos.removeEventListener(
-        "click",
-        trackElement.__prevListener
-      );
-      nextButtonServicos.removeEventListener(
-        "click",
-        trackElement.__nextListener
-      );
+      if (prevButtonServicos) {
+        prevButtonServicos.removeEventListener(
+          "click",
+          trackElement.__prevListener
+        );
+      }
+      if (nextButtonServicos) {
+        nextButtonServicos.removeEventListener(
+          "click",
+          trackElement.__nextListener
+        );
+      }
       trackElement.removeEventListener("scroll", trackElement.__scrollListener);
     }
 
     const prevHandler = () => {
       const currentIndex = getCurrentPageIndex();
-      scrollToPage(currentIndex - 1);
+      const totalPages = calculateTotalPages();
+
+      const newIndex = (currentIndex - 1 + totalPages) % totalPages;
+
+      if (totalPages > 1) {
+        scrollToPage(newIndex);
+      }
     };
+
     const nextHandler = () => {
       const currentIndex = getCurrentPageIndex();
-      scrollToPage(currentIndex + 1);
+      const totalPages = calculateTotalPages();
+
+      const newIndex = (currentIndex + 1) % totalPages;
+
+      if (totalPages > 1) {
+        scrollToPage(newIndex);
+      }
     };
+
     const scrollHandler = () => {
       clearTimeout(trackElement.scrollTimeout);
       trackElement.scrollTimeout = setTimeout(updateDots, 150);
